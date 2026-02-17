@@ -68,7 +68,7 @@ func set_knockback_power(power: float) -> void:
 
 func velocity_flip():
 	if not velocity_module: return
-	var x_dir = velocity.x
+	var x_dir = velocity_module.velocity.x
 	if x_dir > 0:
 		scale.x = 1
 	elif x_dir < 0:
