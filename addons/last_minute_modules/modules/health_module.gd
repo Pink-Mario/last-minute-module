@@ -1,20 +1,41 @@
+## Manages health, damage, healing, and death for game entities.
+##
+## HealthModule provides a complete health system with signals for health changes,
+## damage taken, healing, and death. It integrates with IFrameModule for invincibility
+## frames after taking damage, and tracks the direction and source of the last hit
+## for knockback and visual feedback purposes.
+##
+## @tutorial: Add as a child node and connect signals to respond to health events.
+## Reference this module in HurtboxModule to receive damage from hitboxes.
 extends Node
 class_name HealthModule
 
+## Emitted when health value changes. Provides old and new values.
 signal health_changed(old_health: int, new_health: int)
+## Emitted when health reaches zero.
 signal died
+## Emitted when health is restored to max_health.
 signal health_full
+## Emitted when damage is taken. Provides the damage amount.
 signal damage_taken(damage: int)
+## Emitted when health is restored. Provides the heal amount.
 signal health_restored(amount: int)
+## Emitted when max_health is changed. Provides old and new max values.
 signal max_health_changed(old_max: int, new_max: int)
 
+## The maximum health value. Health cannot exceed this.
 @export var max_health = 100
+## Optional IFrameModule to trigger invincibility after taking damage.
 @export var iframe_module: IFrameModule
 
+## When true, the entity cannot take damage from any source.
 var invincible = false
 
+## Current health value.
 var health = 0
+## Direction vector pointing from this entity toward the last damage source.
 var last_damage_dir: Vector2 = Vector2.ZERO
+## Reference to the HitboxModule that last dealt damage to this entity.
 var last_damage_source: HitboxModule
 
 func _ready() -> void:

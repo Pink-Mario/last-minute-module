@@ -1,10 +1,24 @@
+## Provides invincibility frames (i-frames) with visual flickering feedback.
+##
+## IFrameModule creates a brief period of invulnerability after taking damage,
+## preventing the entity from being hit multiple times in quick succession.
+## During i-frames, an optional visual node will flicker to indicate invincibility.
+##
+## This module extends Timer and should be referenced by a HealthModule to
+## automatically trigger i-frames when damage is taken.
+##
+## @tutorial: Add as a child node and reference it in your HealthModule's iframe_module export.
+## Optionally assign a Sprite2D or other Node2D to the visual export for flickering.
 extends Timer
 class_name IFrameModule
 
+## The Node2D whose alpha will be modulated during i-frames to create a flicker effect.
 @export var visual: Node2D
+## How long the invincibility period lasts (in seconds).
 @export var iframe_duration = 0.4
 
 var _is_visible = false
+## Time interval between visibility toggles during the flicker effect.
 var flicker_interval = 0.1
 var _flicker_timer: Timer
 

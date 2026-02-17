@@ -1,10 +1,28 @@
+## An Area2D that deals damage to HurtboxModules on contact.
+##
+## HitboxModule is the offensive component of the combat system. When it overlaps
+## with a HurtboxModule from a different group, it automatically applies damage
+## based on its DamageData resource. Use this for melee attacks, hazards, or any
+## damage-dealing collision area.
+##
+## In the editor, collision shapes are tinted red for easy identification.
+##
+## @tutorial: Add CollisionShape2D children to define the damage area.
+## Assign a DamageData resource and optionally a GroupModule for team filtering.
+@tool
 extends Area2D
 class_name HitboxModule
 
+## The damage configuration applied when hitting a target.
 @export var damage_data: DamageData
+## Optional group for friendly fire prevention. If set, won't damage same-group targets.
 @export var group_module: GroupModule
 
+## Emitted when this hitbox successfully hits a hurtbox.
 signal hit(hurtbox: HurtboxModule)
+
+const HITBOX_LAYER := 1 << 30 # Layer 31
+const HURTBOX_LAYER := 1 << 31 # Layer 32
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -13,6 +31,9 @@ func _ready() -> void:
 			damage_data = damage_data.duplicate()
 	else:
 		_update_debug_colors()
+	
+	collision_layer = HITBOX_LAYER
+	collision_mask = HURTBOX_LAYER
 
 func _update_debug_colors():
 	for child in get_children():
