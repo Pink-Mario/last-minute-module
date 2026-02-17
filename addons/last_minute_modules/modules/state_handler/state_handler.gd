@@ -41,7 +41,10 @@ func _physics_process(delta: float) -> void:
 		return
 	current_state.update_physics(delta)
 
-func trigger_transition(new_state: State) -> void:
+func trigger_transition(new_state_name: String) -> void:
+	var new_state := get_state(new_state_name)
+	if not new_state:
+		return
 	if new_state == current_state:
 		return
 	current_state.exit()

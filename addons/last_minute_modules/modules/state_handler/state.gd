@@ -12,8 +12,8 @@ class_name State
 ## Unique identifier for this state. Used by StateHandler.get_state() for lookups.
 @export var state_name: String = "Exist"
 
-## Emit this signal with the target State to request a state transition.
-signal transition(new_state: State)
+## Emit this signal with the target state_name to request a state transition.
+signal transition(new_state: String)
 
 ## Reference to the Node2D that owns this state machine (set by StateHandler).
 var user: Node2D
