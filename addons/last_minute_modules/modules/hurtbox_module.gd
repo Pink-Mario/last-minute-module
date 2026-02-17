@@ -1,9 +1,19 @@
+@tool
 extends Area2D
 class_name HurtboxModule
 
 @export var velocity_module: VelocityModule
 @export var health_module: HealthModule
 @export var group_module: GroupModule
+
+func _ready():
+	if Engine.is_editor_hint():
+		_update_debug_colors()
+
+func _update_debug_colors():
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.debug_color = Color(0.2, 0.4, 1, 0.4)
 
 func take_hit(hitbox: HitboxModule):
 	if health_module and hitbox.damage_data:

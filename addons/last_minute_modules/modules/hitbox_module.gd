@@ -7,9 +7,17 @@ class_name HitboxModule
 signal hit(hurtbox: HurtboxModule)
 
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	if damage_data:
-		damage_data = damage_data.duplicate()
+	if not Engine.is_editor_hint():
+		area_entered.connect(_on_area_entered)
+		if damage_data:
+			damage_data = damage_data.duplicate()
+	else:
+		_update_debug_colors()
+
+func _update_debug_colors():
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.debug_color = Color(1, 0, 0, 0.4)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtboxModule:
