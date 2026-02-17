@@ -14,7 +14,7 @@ func _enable_plugin() -> void:
 	add_custom_type("HurtboxModule", "Area2D", preload("res://addons/last_minute_modules/modules/hurtbox_module.gd"), preload("res://addons/last_minute_modules/icons/icon-hurtbox.png"))
 	
 	add_custom_type("ProjectileModule", "HitboxModule", preload("res://addons/last_minute_modules/modules/projectile_module.gd"), preload("res://addons/last_minute_modules/icons/icon-bullet.png"))
-	add_custom_type("MuzzleModule", "MuzzleModule", preload("res://addons/last_minute_modules/modules/muzzle_module.gd"), preload("res://addons/last_minute_modules/icons/icon-bullet.png"))
+	add_custom_type("MuzzleModule", "Marker2D", preload("res://addons/last_minute_modules/modules/muzzle_module.gd"), preload("res://addons/last_minute_modules/icons/icon-bullet.png"))
 	
 	add_custom_type("StateHandler", "Node", preload("res://addons/last_minute_modules/modules/state_handler/state_handler.gd"), preload("res://addons/last_minute_modules/icons/icon-statehandler.png"))
 	add_custom_type("State", "Node", preload("res://addons/last_minute_modules/modules/state_handler/state.gd"), preload("res://addons/last_minute_modules/icons/icon-state.png"))

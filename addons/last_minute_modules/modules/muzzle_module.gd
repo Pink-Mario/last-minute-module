@@ -60,18 +60,15 @@ func _draw() -> void:
 	draw_line(end_point, end_point + Vector2(arrow_size, 0).rotated(arrow_angle), line_color, line_width)
 	draw_line(end_point, end_point + Vector2(arrow_size, 0).rotated(-arrow_angle), line_color, line_width)
 	
-	# Draw spread arc if spread is set
 	if spread_degrees > 0.0:
 		var half_spread = deg_to_rad(spread_degrees / 2.0)
 		var spread_color = Color(1.0, 1.0, 0.0, 0.3)
 		
-		# Draw spread lines
 		var upper_end = Vector2(editor_visual_length, 0).rotated(-half_spread)
 		var lower_end = Vector2(editor_visual_length, 0).rotated(half_spread)
 		draw_line(Vector2.ZERO, upper_end, spread_color, line_width)
 		draw_line(Vector2.ZERO, lower_end, spread_color, line_width)
 		
-		# Draw arc
 		var arc_points = PackedVector2Array()
 		var arc_segments = 16
 		for i in range(arc_segments + 1):
