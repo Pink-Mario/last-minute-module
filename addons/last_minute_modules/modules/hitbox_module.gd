@@ -4,6 +4,8 @@ class_name HitboxModule
 @export var damage_data: DamageData
 @export var group_module: GroupModule
 
+signal hit(hurtbox: HurtboxModule)
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	if damage_data:
@@ -16,6 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		if not area.is_same_team(self):
 			hurtbox.take_hit(self)
+			emit_signal("hit", area)
 
 func get_damage():
 	return damage_data.dmg
