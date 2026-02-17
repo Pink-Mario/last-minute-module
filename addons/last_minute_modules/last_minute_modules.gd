@@ -16,6 +16,9 @@ func _enable_plugin() -> void:
 	add_custom_type("ProjectileModule", "HitboxModule", preload("res://addons/last_minute_modules/modules/projectile_module.gd"), preload("res://addons/last_minute_modules/icons/icon-bullet.png"))
 	add_custom_type("MuzzleModule", "MuzzleModule", preload("res://addons/last_minute_modules/modules/muzzle_module.gd"), preload("res://addons/last_minute_modules/icons/icon-bullet.png"))
 	
+	add_custom_type("StateHandler", "Node", preload("res://addons/last_minute_modules/modules/state_handler/state_handler.gd"), preload("res://addons/last_minute_modules/icons/icon-statehandler.png"))
+	add_custom_type("State", "Node", preload("res://addons/last_minute_modules/modules/state_handler/state.gd"), preload("res://addons/last_minute_modules/icons/icon-state.png"))
+	
 	add_autoload_singleton("HelperScript", "res://addons/last_minute_modules/helper_script.gd")
 	
 func _disable_plugin() -> void:

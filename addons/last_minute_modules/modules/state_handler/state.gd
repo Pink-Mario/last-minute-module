@@ -1,19 +1,19 @@
 extends Node
 class_name State
 
-@export var state_name = "Exist"
+@export var state_name: String = "Exist"
 
 signal transition(new_state: State)
 
-# actually trying state machines for once lol
-func enter():
+var user: Node2D
+var handler: StateHandler
+
+func enter() -> void:
+	pass
+func exit() -> void:
 	pass
 
-func exit():
+func update(delta: float) -> void:
 	pass
-
-func update():
-	pass
-
-func update_physics():
+func update_physics(delta: float) -> void:
 	pass
