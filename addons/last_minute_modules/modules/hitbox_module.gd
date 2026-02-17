@@ -17,6 +17,8 @@ class_name HitboxModule
 @export var damage_data: DamageData
 ## Optional group for friendly fire prevention. If set, won't damage same-group targets.
 @export var group_module: GroupModule
+## Optional velocity for automatic flipping
+@export var velocity_module: VelocityModule
 
 ## Emitted when this hitbox successfully hits a hurtbox.
 signal hit(hurtbox: HurtboxModule)
@@ -63,3 +65,14 @@ func modify_damage(amount: int) -> void:
 func set_knockback_power(power: float) -> void:
 	if damage_data:
 		damage_data.knockback_power = power
+
+func velocity_flip():
+	if not velocity_module: return
+	var x_dir = velocity.x
+	if x_dir > 0:
+		scale.x = 1
+	elif x_dir < 0:
+		scale.x = -1
+
+func _process(delta: float) -> void:
+	velocity_flip()
