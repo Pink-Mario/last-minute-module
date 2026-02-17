@@ -35,3 +35,26 @@ func update(delta: float) -> void:
 ## Called every physics frame via _physics_process. Override for movement and physics logic.
 func update_physics(delta: float) -> void:
 	pass
+
+## execute to have a chance to transition to a list of states
+func state_jump(chance: float, state_names: Array[String]) -> bool:
+	if state_names.is_empty():
+		return false
+	
+	if randf() > chance:
+		return false
+		
+	var selected_state = state_names[randi() % state_names.size()]
+	transition.emit(selected_state)
+	return true
+
+## jumps if the condition is true
+func state_jump_if(condition: bool, state_name: String) -> bool:
+	if condition:
+		transition.emit(state_name)
+		return true
+	return false
+
+## jumps if the condition isn't true
+func state_jump_if_not(condition: bool, state_name: String) -> bool:
+	return state_jump_if(not condition, state_name)
