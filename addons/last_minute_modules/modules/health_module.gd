@@ -9,26 +9,35 @@ signal health_restored(amount: int)
 signal max_health_changed(old_max: int, new_max: int)
 
 @export var max_health = 100
+@export var iframe_module: IFrameModule
+
 var invincible = false
-var no_damage = false
 
 var health = 0
 var last_damage_dir: Vector2 = Vector2.ZERO
-#var last_damage_source: Hitbox
+var last_damage_source: HitboxModule
 
 func _ready() -> void:
 	health = max_health
 
 func take_damage(amount: int, source: Node2D) -> void:
-	if invincible or amount <= 0 or no_damage:
+	if iframe_module and !iframe_module.is_stopped():
+		return
+	if invincible or amount <= 0:
 		return
 	last_damage_dir = get_parent().global_position.direction_to(source.global_position)
+	if source is HitboxModule:
+		last_damage_source = source
+	else:
+		last_damage_source = source.get_parent()
 	var old_health = health
 	health = max(0, health - amount)
 	damage_taken.emit(amount)
 	health_changed.emit(old_health, health)
 	if health <= 0:
 		died.emit()
+	elif iframe_module:
+		iframe_module.trigger_iframes()
 
 func heal(amount: int) -> void:
 	if amount <= 0:
