@@ -9,6 +9,10 @@ func _enable_plugin() -> void:
 	add_custom_type("HealthModule", "Node", preload("res://addons/last_minute_modules/modules/health_module.gd"), preload("res://addons/last_minute_modules/icons/icon-health.png"))
 	add_custom_type("GroupModule", "Node", preload("res://addons/last_minute_modules/modules/group_module.gd"), preload("res://addons/last_minute_modules/icons/icon-group.png"))
 	add_custom_type("DamageData", "Resource", preload("res://addons/last_minute_modules/resources/damage_data.gd"), preload("res://addons/last_minute_modules/icons/icon-hitbox.png"))
+	
+	add_custom_type("HitboxModule", "Area2D", preload("res://addons/last_minute_modules/modules/hitbox_module.gd"), preload("res://addons/last_minute_modules/icons/icon-hitbox.png"))
+	add_custom_type("HurtboxModule", "Area2D", preload("res://addons/last_minute_modules/modules/hurtbox_module.gd"), preload("res://addons/last_minute_modules/icons/icon-hurtbox.png"))
+	
 	add_autoload_singleton("HelperScript", "res://addons/last_minute_modules/helper_script.gd")
 	
 

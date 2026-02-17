@@ -1,4 +1,5 @@
 extends Node
+class_name GroupModule
 
 @export var group: ACTOR_GROUPS = ACTOR_GROUPS.PLAYER
 
