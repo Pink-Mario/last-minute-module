@@ -109,3 +109,8 @@ func get_horizontal_direction_to_target() -> float:
 		return 0.0
 	
 	return sign(target.global_position.x - get_parent().global_position.x)
+
+func is_closer_than(distance: float) -> bool:
+	if not target or not get_parent():
+		return false
+	return get_parent().global_position.distance_to(target.global_position) < distance
