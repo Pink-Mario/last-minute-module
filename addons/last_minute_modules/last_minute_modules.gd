@@ -49,7 +49,7 @@ func _enable_plugin() -> void:
 	
 	dock = preload("res://addons/last_minute_modules/dock/module_builder_dock.tscn").instantiate()
 	dock.editor_plugin = self
-	add_dock(dock)
+	add_control_to_dock(DOCK_SLOT_LEFT_UL, dock)
 	
 func _disable_plugin() -> void:
 	for type_name in all_modules:

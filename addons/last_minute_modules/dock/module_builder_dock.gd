@@ -90,6 +90,7 @@ func _create_node(node_type: String) -> Node:
 		return node
 	else:
 		node = ClassDB.instantiate(node_type)
+	node.name = node_type
 	return node
 		
 func _on_module_pressed(module_name: String) -> void:
