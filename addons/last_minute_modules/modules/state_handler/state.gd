@@ -4,7 +4,7 @@
 ## Extend this class and override enter(), exit(), update(), and update_physics()
 ## to define state-specific behavior. Emit the transition signal to switch states.
 ##
-## @tutorial: Create a new script extending State, set state_name in the inspector,
+## @tutorial: Create a new script extending State,
 ## and add it as a child of a StateHandler node. Override virtual methods as needed.
 extends Node
 class_name State
