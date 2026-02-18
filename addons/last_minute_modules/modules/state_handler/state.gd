@@ -12,11 +12,12 @@ class_name State
 ## Unique identifier for this state. Used by StateHandler.get_state() for lookups.
 @export var state_name: String = "Exist"
 
-## Emit this signal with the target state_name to request a state transition.
-signal transition(new_state: String)
+## Emit this signal with the target new_state reference to request a state transition.
+signal transition(new_state: State)
 
 ## Reference to the Node2D that owns this state machine (set by StateHandler).
 var user: Node2D
+
 ## Reference to the parent StateHandler managing this state.
 var handler: StateHandler
 
@@ -36,25 +37,25 @@ func update(delta: float) -> void:
 func update_physics(delta: float) -> void:
 	pass
 
-## execute to have a chance to transition to a list of states
-func state_jump(chance: float, state_names: Array[String]) -> bool:
-	if state_names.is_empty():
+## Transition to a specific state
+func change_state(state: State) -> void:
+	transition.emit(state)
+
+## Probabilistic transition helper
+func state_jump(chance: float, states: Array[State]) -> bool:
+	if states.is_empty() or randf() > chance:
 		return false
 	
-	if randf() > chance:
-		return false
-		
-	var selected_state = state_names[randi() % state_names.size()]
-	transition.emit(selected_state)
+	var selected = states[randi() % states.size()]
+	transition.emit(selected)
 	return true
 
-## jumps if the condition is true
-func state_jump_if(condition: bool, state_name: String) -> bool:
+## Conditional jump helpers
+func state_jump_if(condition: bool, state: State) -> bool:
 	if condition:
-		transition.emit(state_name)
+		transition.emit(state)
 		return true
 	return false
 
-## jumps if the condition isn't true
-func state_jump_if_not(condition: bool, state_name: String) -> bool:
-	return state_jump_if(not condition, state_name)
+func state_jump_if_not(condition: bool, state: State) -> bool:
+	return state_jump_if(not condition, state)

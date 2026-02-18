@@ -41,23 +41,14 @@ func _physics_process(delta: float) -> void:
 		return
 	current_state.update_physics(delta)
 
-func trigger_transition(new_state_name: String) -> void:
-	var new_state := get_state(new_state_name)
-	if not new_state:
+func trigger_transition(new_state: State) -> void:
+	if not new_state or new_state == current_state:
 		return
-	if new_state == current_state:
-		return
+	
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
-
-func get_state(state_name: String) -> State:
-	for state in states:
-		if state.state_name == state_name:
-			return state
-	push_warning("StateHandler: no state found with name " + state_name)
-	return null
-
+	
 func force_state(new_state: State) -> void:
 	current_state = new_state
 	current_state.enter()
