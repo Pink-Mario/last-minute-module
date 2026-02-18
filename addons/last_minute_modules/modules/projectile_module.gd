@@ -3,6 +3,7 @@
 ## ProjectileModule extends HitboxModule to create bullets, arrows, fireballs, etc.
 ## It moves in a set direction at configurable speed (with optional ramping),
 ## and can be destroyed when: exceeding its range, hitting a target, or leaving the screen.
+## may also control its parent instead of itself
 ##
 ## In the editor, displays a green line showing the maximum travel range.
 ##
