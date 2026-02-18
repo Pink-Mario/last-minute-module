@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://blovqb8vsoy6r" path="res://addons/last_minute_modules/dock/module_builder_dock.gd" id="1_2ymv7"]
 
-[node name="ModuleBuilderDock" type="VBoxContainer" unique_id=346540324]
+[node name="ModuleBuilderDock" type="ScrollContainer" unique_id=308762863]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_2ymv7")
+
+[node name="ModuleBuilderDockV" type="VBoxContainer" parent="." unique_id=587990612]
+layout_mode = 2
