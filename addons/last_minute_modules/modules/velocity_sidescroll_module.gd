@@ -18,6 +18,15 @@ var gravity := ProjectSettings.get_setting("physics/2d/default_gravity")
 ## Track floor contact state. Update this after CharacterBody2D.move_and_slide().
 var is_on_floor := false
 
+func _ready():
+	#floor_check_timer()
+	pass
+
+func floor_check_timer():
+	while true:
+		was_on_floor = is_on_floor
+		await HelperScript.delay(0.1)
+
 func move(direction: Vector2) -> void:
 	if knocked_back:
 		return
@@ -25,9 +34,18 @@ func move(direction: Vector2) -> void:
 		velocity.x = direction.normalized().x * max_speed
 	else:
 		velocity.x = 0.0
-		
+
 func apply_gravity(delta: float) -> void:
-	velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
+	if not was_on_floor and is_on_floor:
+		print("Just landed!")
+		velocity.y = 0.0
+	
+	if is_on_floor:
+		velocity.y = 0.0
+	else:
+		velocity.y = min(velocity.y + gravity * delta, max_fall_speed)
+
+	was_on_floor = is_on_floor
 
 func update_knockback(delta: float) -> void:
 	super.update_knockback(delta)
@@ -36,3 +54,4 @@ func update_knockback(delta: float) -> void:
 
 func reset() -> void:
 	super.reset()
+
