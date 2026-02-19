@@ -20,8 +20,6 @@ var all_modules := [
 	"State"
 ]
 
-var dock: Control
-
 func _enable_plugin() -> void:
 	add_custom_type("VelocityModule", "Node", preload("res://addons/last_minute_modules/modules/velocity_module.gd"), preload("res://addons/last_minute_modules/icons/icon-debug.png"))
 	add_custom_type("SidescrollerVelocityModule", "VelocityModule", preload("res://addons/last_minute_modules/modules/velocity_sidescroll_module.gd"), preload("res://addons/last_minute_modules/icons/icon-2Dvelocity.png"))
@@ -46,16 +44,9 @@ func _enable_plugin() -> void:
 	add_custom_type("State", "Node", preload("res://addons/last_minute_modules/modules/state_handler/state.gd"), preload("res://addons/last_minute_modules/icons/icon-state.png"))
 	
 	add_autoload_singleton("HelperScript", "res://addons/last_minute_modules/helper_script.gd")
-	
-	dock = preload("res://addons/last_minute_modules/dock/module_builder_dock.tscn").instantiate()
-	dock.editor_plugin = self
-	add_dock(dock)
+
 	
 func _disable_plugin() -> void:
 	for type_name in all_modules:
 		remove_custom_type(type_name)
 	remove_autoload_singleton("HelperScript")
-	
-	if dock:
-		remove_control_from_docks(dock)
-		dock.queue_free()

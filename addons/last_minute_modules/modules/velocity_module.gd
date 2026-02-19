@@ -45,7 +45,19 @@ func set_velocity(new_velocity: Vector2) -> void:
 
 func add_thrust(thrust_power: Vector2) -> void:
 	velocity += thrust_power
+
+func insta_thrust_x(thrust_power):
+	velocity.x = thrust_power
 	
+func thrust_x(thrust_power):
+	velocity.x += thrust_power
+
+func insta_thrust_y(thrust_power):
+	velocity.y = thrust_power
+	
+func thrust_y(thrust_power):
+	velocity.y += thrust_power
+
 func apply_knockback(force: Vector2, duration: float) -> void:
 	if force.length() < knockback_velocity.length():
 		return
