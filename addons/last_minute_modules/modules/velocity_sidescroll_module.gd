@@ -6,6 +6,7 @@
 ##
 ## @tutorial: Call move() with horizontal input, apply_gravity() each physics frame,
 ## and apply get_velocity() to your CharacterBody2D. Update is_on_floor after move_and_slide().
+@icon("res://addons/last_minute_modules/icons/icon-2Dvelocity.png")
 extends VelocityModule
 class_name SidescrollerVelocityModule
 
@@ -17,6 +18,9 @@ var gravity := ProjectSettings.get_setting("physics/2d/default_gravity")
 
 ## Track floor contact state. Update this after CharacterBody2D.move_and_slide().
 var is_on_floor := false
+var was_on_floor := false
+
+signal just_landed()
 
 func _ready():
 	#floor_check_timer()
@@ -37,7 +41,7 @@ func move(direction: Vector2) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not was_on_floor and is_on_floor:
-		print("Just landed!")
+		just_landed.emit()
 		velocity.y = 0.0
 	
 	if is_on_floor:
@@ -54,4 +58,3 @@ func update_knockback(delta: float) -> void:
 
 func reset() -> void:
 	super.reset()
-

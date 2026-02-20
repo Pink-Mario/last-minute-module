@@ -9,6 +9,7 @@
 ##
 ## @tutorial: Add as a child node and reference it in your HealthModule's iframe_module export.
 ## Optionally assign a Sprite2D or other Node2D to the visual export for flickering.
+@icon("res://addons/last_minute_modules/icons/icon-health.png")
 extends Timer
 class_name IFrameModule
 

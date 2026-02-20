@@ -3,6 +3,7 @@
 ## Primarily horizontal movement with optional vertical movement for flying enemies
 ## Preserves vertical velocity component for gravity.
 
+@icon("res://addons/last_minute_modules/icons/icon-2Dvelocity.png")
 extends PathfindModule
 class_name PathfindModuleSideScroller
 

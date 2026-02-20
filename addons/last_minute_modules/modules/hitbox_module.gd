@@ -10,6 +10,7 @@
 ## @tutorial: Add CollisionShape2D children to define the damage area.
 ## Assign a DamageData resource and optionally a GroupModule for team filtering.
 @tool
+@icon("res://addons/last_minute_modules/icons/icon-hurtbox.png")
 extends Area2D
 class_name HitboxModule
 

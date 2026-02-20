@@ -10,6 +10,7 @@
 ##
 ## @tutorial: Add as a child node and call move() with input direction each frame.
 ## Apply the velocity to your CharacterBody2D using velocity = velocity_module.get_velocity().
+@icon("res://addons/last_minute_modules/icons/icon-debug.png")
 extends Node
 class_name VelocityModule
 

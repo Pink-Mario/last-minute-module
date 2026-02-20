@@ -10,6 +10,7 @@
 ## Assign references to HealthModule (required for damage) and optionally
 ## VelocityModule (for knockback) and GroupModule (for team filtering).
 @tool
+@icon("res://addons/last_minute_modules/icons/icon-hitbox.png")
 extends Area2D
 class_name HurtboxModule
 

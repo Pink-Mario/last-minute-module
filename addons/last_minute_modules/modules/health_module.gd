@@ -7,6 +7,7 @@
 ##
 ## @tutorial: Add as a child node and connect signals to respond to health events.
 ## Reference this module in HurtboxModule to receive damage from hitboxes.
+@icon("res://addons/last_minute_modules/icons/icon-health.png")
 extends Node
 class_name HealthModule
 

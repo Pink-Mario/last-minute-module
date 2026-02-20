@@ -3,6 +3,7 @@
 ## Allows movement in all four cardinal directions with equal priority.
 ## Best for overhead view games like classic RPGs, twin-stick shooters, etc.
 
+@icon("res://addons/last_minute_modules/icons/icon-topdownvelocity.png")
 extends PathfindModule
 class_name PathfindModuleTopDown
 

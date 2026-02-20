@@ -9,6 +9,7 @@
 ##
 ## @tutorial: Add this module as a child of your character/enemy node and set
 ## the group property in the inspector. Reference it in HitboxModule and HurtboxModule.
+@icon("res://addons/last_minute_modules/icons/icon-group.png")
 extends Node
 class_name GroupModule
 

@@ -10,6 +10,7 @@
 ## @tutorial: Create a scene with ProjectileModule as root, add a CollisionShape2D
 ## and Sprite2D. Assign this scene to a MuzzleModule's projectile_scene.
 @tool
+@icon("res://addons/last_minute_modules/icons/icon-bullet.png")
 extends HitboxModule
 class_name ProjectileModule
 

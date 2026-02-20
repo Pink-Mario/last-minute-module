@@ -6,6 +6,8 @@
 ##
 ## @tutorial: Call move() with your input direction (e.g., Input.get_vector())
 ## each frame, then apply get_velocity() to your CharacterBody2D.
+
+@icon("res://addons/last_minute_modules/icons/icon-topdownvelocity.png")
 extends VelocityModule
 class_name TopdownVelocityModule
 

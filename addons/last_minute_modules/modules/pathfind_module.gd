@@ -3,6 +3,7 @@
 ## Contains shared functionality for all pathfinding types.
 ## Extend this class to create specialized pathfinding behaviors.
 
+@icon("res://addons/last_minute_modules/icons/icon-debug.png")
 extends Node
 class_name PathfindModule
 

@@ -10,6 +10,7 @@
 ##
 ## @tutorial: Position this Marker2D where projectiles should spawn.
 ## Assign a projectile scene (must have ProjectileModule as root) and call fire().
+@icon("res://addons/last_minute_modules/icons/icon-bullet.png")
 @tool
 extends Marker2D
 class_name MuzzleModule
